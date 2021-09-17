@@ -1,0 +1,84 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+</head>
+<body>
+   <div class="container">
+        <figure class="text-center">
+            <blockquote class="blockquote">
+                <h1>楽天商品</h1>
+            </blockquote>
+        </figure>
+        <div class="row mb-3">
+            <label for="inputkeyword3" class="col-sm-2 col-form-label"><h3>キーワード</h3></label>
+            <div class="col-sm-10">
+                <input type="keyword" class="form-control" id="inputkeyword3">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="inputkeyword3" class="col-sm-2 col-form-label"><h3>NGキーワード</h3></label>
+            <div class="col-sm-10">
+                <input type="keyword" class="form-control" id="inputkeyword4">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <label for="sort_method" class="col-sm-2 col-form-label"><h3>並び順を選択してください</h3></label>
+            <div class="col-sm-10">
+                <input type="keyword" list="sort_method" class="form-control" id="inputkeyword5">
+            </div>
+            <datalist id="sort_method">
+            <option label="楽天標準ソート順" value="standard">
+            <option label="アフィリエイト料率順(昇順)" value="+affiliateRate">
+            <option label="アフィリエイト料率順(降順)" value="-affiliateRate">
+            <option label="レビュー件数順(昇順)" value="+reviewCount">
+            <option label="レビュー件数順(降順)" value="-reviewCount">
+            <option label="価格順(昇順)" value="+itemPrice">
+            <option label="価格順(降順)" value="-itemPrice">
+            <option label="レビュー平均順(昇順)" value="+reviewAverage">
+            <option label="レビュー平均順(降順)" value="-reviewAverage">
+            <option label="商品更新日時順(昇順)" value="+updateTimestamp">
+            <option label="商品更新日時順(降順)" value="-updateTimestamp">
+            </datalist>
+            </select>
+        </div>
+        
+        <div class="row mb-3">
+            <label for="inputkeyword3" class="col-sm-2 col-form-label"><h3>ファイル名</h3></label>
+            <div class="col-sm-10">
+                <input type="keyword" class="form-control" id="inputkeyword7" placeholder=".csvで終わらせてください">
+            </div>
+            </div>
+        <div class="row mb-3">
+            <label for="inputkeyword3" class="col-sm-2 col-form-label"><h5>csvファイルを保存するフォルダ名</h5></label>
+            <div class="col-sm-10">
+                <input type="keyword" class="form-control" id="inputkeyword8" placeholder="フォルダ名を入力して下さい">
+            </div>
+        </div>
+        <div class="search_button">
+            <input type="button" class="btn btn-primary btn-lg" id="btn5" value="検索">
+        </div>
+        <h1>検索結果</h1>
+        <textarea id="picture_textarea" rows="10" cols="60"></textarea>
+
+    </div>
+    <script type="text/javascript" src="./eel.js"></script>
+    <script>
+        document.getElementById("btn5").addEventListener('click', () => {
+            if (inputkeyword4.value == "") { 
+                eel.get_name_and_price_no_ng_keyword(inputkeyword3.value,inputkeyword5.value,inputkeyword8.value,inputkeyword7.value):
+            } else {
+                eel.get_name_and_price(inputkeyword3.value,inputkeyword4.value,inputkeyword5.value,inputkeyword8.value,inputkeyword7.value):
+            }
+        })
+
+        eel.expose(view_picture)
+        function view_picture(text){
+            picture_textarea.value += text + '\n'
+        }
+    </script>
+</body>
